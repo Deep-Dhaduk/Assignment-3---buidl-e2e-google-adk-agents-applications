@@ -1,0 +1,5 @@
+# The CLI analyzes an explicit source bundle; it needs no filesystem or shell tools.
+[[rule]]
+toolName = "*"
+decision = "deny"
+priority = 999

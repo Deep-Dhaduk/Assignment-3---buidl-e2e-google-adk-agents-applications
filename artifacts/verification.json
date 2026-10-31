@@ -1,0 +1,28 @@
+{
+  "verified_at_utc": "2026-10-31T12:06:36.475964+00:00",
+  "python": "3.13.6",
+  "google_adk": "1.39.1",
+  "mcp": "1.30.0",
+  "checks": {
+    "lint": {
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    "tests": {
+      "exit_code": 0,
+      "stdout": "......................                                                   [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n.venv\\Lib\\site-packages\\google\\adk\\features\\_feature_decorator.py:72\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\features\\_feature_decorator.py:72: UserWarning: [EXPERIMENTAL] feature FeatureName.PLUGGABLE_AUTH is enabled.\n    check_feature_enabled()\n\ntests/test_mcp.py::test_adk_discovers_real_mcp_catalog_tools\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\tools\\mcp_tool\\mcp_toolset.py:324: UserWarning: [EXPERIMENTAL] feature FeatureName._MCP_GRACEFUL_ERROR_HANDLING is enabled.\n    session = await self._mcp_session_manager.create_session(\n\ntests/test_mcp.py::test_adk_discovers_real_mcp_catalog_tools\ntests/test_mcp.py::test_adk_discovers_real_mcp_catalog_tools\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\ntests/test_runtime.py::test_adk_invokes_mcp_and_reopens_after_cleanup\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\tools\\mcp_tool\\mcp_toolset.py:376: DeprecationWarning: MCPTool class is deprecated, use `McpTool` instead.\n    mcp_tool = MCPTool(\n\ntests/test_mcp.py::test_adk_discovers_real_mcp_catalog_tools\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\features\\_feature_decorator.py:72: UserWarning: [EXPERIMENTAL] feature FeatureName.BASE_AUTHENTICATED_TOOL is enabled.\n    check_feature_enabled()\n\ntests/test_runtime.py::test_real_adk_confirmation_roundtrip[False]\n  {REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\features\\_feature_decorator.py:72: UserWarning: [EXPERIMENTAL] feature FeatureName.TOOL_CONFIRMATION is enabled.\n    check_feature_enabled()\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n22 passed, 13 warnings in 10.58s\n",
+      "stderr": ""
+    },
+    "local_tool_demo": {
+      "exit_code": 0,
+      "stdout": "{\n  \"mode\": \"LOCAL TOOL VERIFICATION \\u2014 no model calls or web research\",\n  \"artifact\": \"{TEMPORARY_DEMO_DIRECTORY}\\\\artifacts\\\\local-demo.json\"\n}\n",
+      "stderr": "{REPOSITORY}\\.venv\\Lib\\site-packages\\google\\adk\\features\\_feature_decorator.py:72: UserWarning: [EXPERIMENTAL] feature FeatureName.PLUGGABLE_AUTH is enabled.\n  check_feature_enabled()\nProcessing request of type ListToolsRequest\nProcessing request of type CallToolRequest\nProcessing request of type ListToolsRequest\nProcessing request of type CallToolRequest\n"
+    }
+  },
+  "live_gemini_verified": false,
+  "cloud_deployment_verified": false,
+  "docker_verified": false,
+  "youtube_uploaded": false,
+  "note": "Local tools and ADK orchestration tested. Scripted models in tests are test doubles, not live Gemini calls."
+}

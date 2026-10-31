@@ -1,0 +1,200 @@
+{
+  "mode": "LOCAL TOOL VERIFICATION \u2014 no model calls or web research",
+  "mcp": {
+    "bugs": {
+      "tools": [
+        "search_bugs",
+        "get_bug",
+        "read_source"
+      ],
+      "result": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"bugs\": [\n    {\n      \"id\": \"BUG-101\",\n      \"title\": \"Checkout total ignores quantity\",\n      \"description\": \"Buying three items charges for one. Reproduce: calculate_total(1200, 3) returns 1200, expected 3600.\",\n      \"status\": \"open\",\n      \"severity\": \"high\",\n      \"file\": \"pricing.py\"\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    },
+    "catalog": {
+      "tools": [
+        "search_products",
+        "get_product"
+      ],
+      "result": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ok\",\n  \"currency\": \"USD\",\n  \"products\": [\n    {\n      \"id\": \"SHOE-001\",\n      \"name\": \"Trail running shoes\",\n      \"category\": \"running\",\n      \"price_cents\": 8999,\n      \"stock\": 12\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    }
+  },
+  "quote": {
+    "status": "confirmation_required",
+    "quote": {
+      "id": "2fd90b2c-88e7-4ef8-adb5-1269357fb46d",
+      "customer_id": "demo-customer",
+      "product_id": "BALL-001",
+      "quantity": 1,
+      "unit_price_cents": 2499,
+      "delivery": "pickup",
+      "expires_at": 1793449292
+    },
+    "total_cents": 2499,
+    "currency": "USD"
+  },
+  "unconfirmed": {
+    "status": "confirmation_required",
+    "message": "Confirm the displayed quote before purchase"
+  },
+  "order": {
+    "status": "ok",
+    "order": {
+      "id": "9eb75237-002e-4382-ba5b-d1b0e8c068ef",
+      "quote_id": "2fd90b2c-88e7-4ef8-adb5-1269357fb46d",
+      "customer_id": "demo-customer",
+      "product_id": "BALL-001",
+      "quantity": 1,
+      "total_cents": 2499,
+      "delivery": "pickup",
+      "status": "placed"
+    },
+    "replayed": false
+  },
+  "retry": {
+    "status": "ok",
+    "order": {
+      "id": "9eb75237-002e-4382-ba5b-d1b0e8c068ef",
+      "quote_id": "2fd90b2c-88e7-4ef8-adb5-1269357fb46d",
+      "customer_id": "demo-customer",
+      "product_id": "BALL-001",
+      "quantity": 1,
+      "total_cents": 2499,
+      "delivery": "pickup",
+      "status": "placed"
+    },
+    "replayed": true
+  },
+  "buggy_review": {
+    "project": "buggy",
+    "analysis": {
+      "status": "ok",
+      "project": "buggy",
+      "files": [
+        {
+          "file": "pricing.py",
+          "source": "import os\n\n\ndef calculate_total(price_cents, quantity):\n    return price_cents\n\n\ndef average_price(prices):\n    return sum(prices) / len(prices)\n"
+        },
+        {
+          "file": "test_pricing.py",
+          "source": "import unittest\n\nfrom pricing import average_price, calculate_total\n\n\nclass PricingTests(unittest.TestCase):\n    def test_quantity(self):\n        self.assertEqual(calculate_total(1200, 3), 3600)\n\n    def test_empty_cart(self):\n        self.assertEqual(average_price([]), 0)\n\n    def test_negative_quantity(self):\n        with self.assertRaises(ValueError):\n            calculate_total(1200, -2)\n\n    def test_average(self):\n        self.assertEqual(average_price([100, 200]), 150)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        }
+      ],
+      "ast_findings": [],
+      "lint": {
+        "status": "failed",
+        "exit_code": 1,
+        "stdout": "[\n  {\n    \"cell\": null,\n    \"code\": \"F401\",\n    \"end_location\": {\n      \"column\": 10,\n      \"row\": 1\n    },\n    \"filename\": \"D:\\\\Assignment 3 - buidl e2e google adk agents applications\\\\examples\\\\review_targets\\\\buggy\\\\pricing.py\",\n    \"fix\": {\n      \"applicability\": \"safe\",\n      \"edits\": [\n        {\n          \"content\": \"\",\n          \"end_location\": {\n            \"column\": 1,\n            \"row\": 2\n          },\n          \"location\": {\n            \"column\": 1,\n            \"row\": 1\n          }\n        }\n      ],\n      \"message\": \"Remove unused import: `os`\"\n    },\n    \"location\": {\n      \"column\": 8,\n      \"row\": 1\n    },\n    \"message\": \"`os` imported but unused\",\n    \"name\": \"unused-import\",\n    \"noqa_row\": 1,\n    \"severity\": \"error\",\n    \"url\": \"https://docs.astral.sh/ruff/rules/unused-import\"\n  }\n]",
+        "stderr": "",
+        "truncated": false,
+        "duration_seconds": 0.135
+      },
+      "lint_findings": [
+        {
+          "cell": null,
+          "code": "F401",
+          "end_location": {
+            "column": 10,
+            "row": 1
+          },
+          "filename": "{REPOSITORY}\\examples\\review_targets\\buggy\\pricing.py",
+          "fix": {
+            "applicability": "safe",
+            "edits": [
+              {
+                "content": "",
+                "end_location": {
+                  "column": 1,
+                  "row": 2
+                },
+                "location": {
+                  "column": 1,
+                  "row": 1
+                }
+              }
+            ],
+            "message": "Remove unused import: `os`"
+          },
+          "location": {
+            "column": 8,
+            "row": 1
+          },
+          "message": "`os` imported but unused",
+          "name": "unused-import",
+          "noqa_row": 1,
+          "severity": "error",
+          "url": "https://docs.astral.sh/ruff/rules/unused-import"
+        }
+      ]
+    },
+    "tests": {
+      "status": "failed",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_average (test_pricing.PricingTests.test_average) ... ok\r\ntest_empty_cart (test_pricing.PricingTests.test_empty_cart) ... ERROR\r\ntest_negative_quantity (test_pricing.PricingTests.test_negative_quantity) ... FAIL\r\ntest_quantity (test_pricing.PricingTests.test_quantity) ... FAIL\r\n\r\n======================================================================\r\nERROR: test_empty_cart (test_pricing.PricingTests.test_empty_cart)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"{REPOSITORY}\\examples\\review_targets\\buggy\\test_pricing.py\", line 11, in test_empty_cart\r\n    self.assertEqual(average_price([]), 0)\r\n                     ~~~~~~~~~~~~~^^^^\r\n  File \"{REPOSITORY}\\examples\\review_targets\\buggy\\pricing.py\", line 9, in average_price\r\n    return sum(prices) / len(prices)\r\n           ~~~~~~~~~~~~^~~~~~~~~~~~~\r\nZeroDivisionError: division by zero\r\n\r\n======================================================================\r\nFAIL: test_negative_quantity (test_pricing.PricingTests.test_negative_quantity)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"{REPOSITORY}\\examples\\review_targets\\buggy\\test_pricing.py\", line 14, in test_negative_quantity\r\n    with self.assertRaises(ValueError):\r\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\r\nAssertionError: ValueError not raised\r\n\r\n======================================================================\r\nFAIL: test_quantity (test_pricing.PricingTests.test_quantity)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"{REPOSITORY}\\examples\\review_targets\\buggy\\test_pricing.py\", line 8, in test_quantity\r\n    self.assertEqual(calculate_total(1200, 3), 3600)\r\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: 1200 != 3600\r\n\r\n----------------------------------------------------------------------\r\nRan 4 tests in 0.003s\r\n\r\nFAILED (failures=2, errors=1)\r\n",
+      "truncated": false,
+      "duration_seconds": 0.189,
+      "execution_mode": "trusted"
+    },
+    "artifact": "{TEMPORARY_DEMO_DIRECTORY}\\artifacts\\review-evidence-b1fdc5795f5c41ddbc7fc656ad5dbe91.json"
+  },
+  "fixed_review": {
+    "project": "fixed",
+    "analysis": {
+      "status": "ok",
+      "project": "fixed",
+      "files": [
+        {
+          "file": "pricing.py",
+          "source": "def calculate_total(price_cents, quantity):\n    if type(price_cents) is not int or price_cents < 0:\n        raise ValueError(\"price_cents must be a non-negative integer\")\n    if type(quantity) is not int or quantity < 1:\n        raise ValueError(\"quantity must be a positive integer\")\n    return price_cents * quantity\n\n\ndef average_price(prices):\n    return sum(prices) / len(prices) if prices else 0\n"
+        },
+        {
+          "file": "test_pricing.py",
+          "source": "import unittest\n\nfrom pricing import average_price, calculate_total\n\n\nclass PricingTests(unittest.TestCase):\n    def test_quantity(self):\n        self.assertEqual(calculate_total(1200, 3), 3600)\n\n    def test_empty_cart(self):\n        self.assertEqual(average_price([]), 0)\n\n    def test_negative_quantity(self):\n        with self.assertRaises(ValueError):\n            calculate_total(1200, -2)\n\n    def test_average(self):\n        self.assertEqual(average_price([100, 200]), 150)\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+        }
+      ],
+      "ast_findings": [],
+      "lint": {
+        "status": "ok",
+        "exit_code": 0,
+        "stdout": "[]",
+        "stderr": "",
+        "truncated": false,
+        "duration_seconds": 0.12
+      },
+      "lint_findings": []
+    },
+    "tests": {
+      "status": "ok",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_average (test_pricing.PricingTests.test_average) ... ok\r\ntest_empty_cart (test_pricing.PricingTests.test_empty_cart) ... ok\r\ntest_negative_quantity (test_pricing.PricingTests.test_negative_quantity) ... ok\r\ntest_quantity (test_pricing.PricingTests.test_quantity) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 4 tests in 0.000s\r\n\r\nOK\r\n",
+      "truncated": false,
+      "duration_seconds": 0.168,
+      "execution_mode": "trusted"
+    },
+    "artifact": "{TEMPORARY_DEMO_DIRECTORY}\\artifacts\\review-evidence-ee471a761e564806a6c3f02626b5f2a7.json"
+  }
+}

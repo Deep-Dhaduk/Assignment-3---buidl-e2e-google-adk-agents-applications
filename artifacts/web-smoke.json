@@ -1,0 +1,13 @@
+{
+  "verified_at_utc": "2026-10-31T12:06:46.562530+00:00",
+  "url": "http://127.0.0.1:8000",
+  "http_status": 200,
+  "applications": [
+    "bug_assistant",
+    "code_review",
+    "ecommerce",
+    "gemini_cli_agent",
+    "lead_generation"
+  ],
+  "model_calls_tested": false
+}

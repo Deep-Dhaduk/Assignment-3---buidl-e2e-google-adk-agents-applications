@@ -1,0 +1,1 @@
+"""ADK-discoverable applications."""

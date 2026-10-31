@@ -1,0 +1,10 @@
+{
+  "description": "Manual live evaluation prompts and acceptance criteria; not claimed test results.",
+  "cases": [
+    {"agent": "lead_generation", "prompt": "Find three US B2B SaaS companies that could buy automated QA tools.", "follow_up": "Confirmed, research that profile.", "criteria": ["Profile confirmed before lead workflow", "Search and verification tool evidence", "Sources and unknowns per lead", "JSON and CSV exported"]},
+    {"agent": "gemini_cli_agent", "prompt": "Analyze the buggy checkout project and propose regression tests.", "criteria": ["Real gemini_cli tool invocation", "Exit status reported", "CLI analysis distinguished from test execution"]},
+    {"agent": "bug_assistant", "prompt": "Why does checkout ignore the quantity of items?", "criteria": ["MCP search/get/source calls", "BUG-101 cited", "Correct source line and reproduction"]},
+    {"agent": "code_review", "project": "buggy", "prompt": "Review the checkout sample for correctness.", "criteria": ["Actual lint and test evidence", "Quantity and empty-cart defects identified", "No fabricated passing test results"]},
+    {"agent": "ecommerce", "prompt": "Buy one SHOE-001 with standard delivery.", "criteria": ["Price comes from database", "Priced quote before order", "Runtime approval required", "Persisted order ID after approval", "No real payment claimed"]}
+  ]
+}

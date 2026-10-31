@@ -1,0 +1,105 @@
+{
+  "verified_at_utc": "2026-10-31T17:01:03.489198+00:00",
+  "all_five_live_workflows_complete": false,
+  "successful_applications": 4,
+  "lead_generation": {
+    "status": "partial",
+    "profile_confirmation": "passed",
+    "research_and_export": "blocked",
+    "models_attempted": [
+      "gemini-2.5-flash",
+      "gemini-3.5-flash-lite"
+    ],
+    "reason": "Gemini 2.5 Flash returned 503 then a daily free-tier limit of 20 requests. Gemini 3.5 Flash-Lite returned 429 on the search workflow; its documented free tier excludes Google Search grounding.",
+    "profile_trace": "artifacts/local/live-validation/lead_generation-2d021ac6bab348d4a0b95a62127937ff.json",
+    "errors": [
+      "artifacts/local/live-validation/lead_research.json",
+      "artifacts/local/live-validation/lead_research_retry.json",
+      "artifacts/local/live-validation/lead_research_lite.json"
+    ],
+    "citations_inspected": false,
+    "live_report_exported": false
+  },
+  "gemini_cli_agent": {
+    "status": "passed",
+    "model": "gemini-3.5-flash-lite",
+    "exit_code": 0,
+    "cli_tool_calls": 0,
+    "trace": "artifacts/local/live-validation/gemini_cli_agent-cc8a9cbe76fa47649c3d17fe2429d450.json",
+    "source_analysis_only": true,
+    "tests_executed_by_cli": false
+  },
+  "bug_assistant": {
+    "status": "passed",
+    "model": "gemini-2.5-flash",
+    "tools": [
+      "get_bug",
+      "read_source"
+    ],
+    "trace": "artifacts/local/bug_assistant-ce50c0f7a6154e3d979c86a447e97a8b.json",
+    "note": "Successful live run from the preceding key-validation step."
+  },
+  "code_review": {
+    "status": "passed",
+    "model": "gemini-2.5-flash",
+    "samples": {
+      "buggy": {
+        "test_status": "failed",
+        "findings": 4,
+        "report": "artifacts/local/live-validation/review-report-242ba8b826964768ba342b7c63c521da.json",
+        "trace": "artifacts/local/live-validation/code_review-e831f8e3f73d4623860e499f11f1bbac.json"
+      },
+      "fixed": {
+        "test_status": "passed",
+        "findings": 0,
+        "report": "artifacts/local/live-validation/review-report-26c8dbfee71041198d4c6d0942b20feb.json",
+        "trace": "artifacts/local/live-validation/code_review-bdc6121e553a4a1aa8188525e47f3729.json"
+      }
+    },
+    "buggy_tests": {
+      "passed": 1,
+      "failures": 2,
+      "errors": 1
+    },
+    "fixed_tests_passed": 4
+  },
+  "ecommerce": {
+    "status": "passed",
+    "models": [
+      "gemini-2.5-flash",
+      "gemini-3.5-flash-lite"
+    ],
+    "quote_total_cents": 8999,
+    "approval_recorded": true,
+    "persisted_demo_orders": 1,
+    "final_delivery": "pickup",
+    "remaining_shoe_stock": 11,
+    "racket_stock": 0,
+    "real_payment": false,
+    "traces": [
+      "artifacts/local/live-validation/ecommerce-b3d02baa128f48f6b1d5063358c4cd9e.json",
+      "artifacts/local/live-validation/ecommerce-f410462adb9941efb6d863d3f1d8a420.json",
+      "artifacts/local/live-validation/ecommerce-1884c64968eb4d5e8466f92072b1673f.json",
+      "artifacts/local/live-validation/ecommerce-44b3896a5256434b9256ac5cae9eba28.json",
+      "artifacts/local/live-validation/ecommerce-9e3e41c9c9474681be391a06763372ce.json"
+    ]
+  },
+  "local_checks": {
+    "lint": "passed",
+    "pytest_passed": 22,
+    "pytest_warnings": 13
+  },
+  "limitations": [
+    "Model output requires review. CLI suggested accepting zero quantity, while the fixed sample explicitly rejects zero quantity; do not adopt that suggestion without deciding the intended requirement.",
+    "The order was persisted before a model-availability error interrupted its approval response. A later order_status tool call verified the order, without creating a duplicate.",
+    "Gemini 2.5 Flash-Lite returned 404 for this new account; the API recommended Gemini 3.5 Flash-Lite.",
+    "No billing settings or .env values were changed; model overrides applied only to verification processes.",
+    "Lead research, citation inspection and live lead export remain incomplete.",
+    "Cloud deployment and video recording remain incomplete."
+  ],
+  "references": [
+    "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite",
+    "https://geminicli.com/docs/cli/trusted-folders/#headless-and-automated-environments"
+  ],
+  "raw_evidence_note": "Detailed traces are local ignored files; this sanitized summary is intended for the repository."
+}

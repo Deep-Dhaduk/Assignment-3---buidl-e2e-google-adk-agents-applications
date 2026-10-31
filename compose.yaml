@@ -1,0 +1,20 @@
+services:
+  suite:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file: .env
+    environment:
+      ADK_DATA_DIR: /app/data
+      ADK_ARTIFACT_DIR: /app/artifacts/local
+      REVIEW_EXECUTION: disabled
+    volumes:
+      - suite-data:/app/data
+      - suite-artifacts:/app/artifacts/local
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+volumes:
+  suite-data:
+  suite-artifacts:
