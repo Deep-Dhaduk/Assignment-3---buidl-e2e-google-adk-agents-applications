@@ -5,12 +5,29 @@ import json
 from collections.abc import AsyncGenerator
 
 from google.adk.agents import BaseAgent
+from google.adk.agents.callback_context import CallbackContext
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event, EventActions
+from google.adk.models.llm_response import LlmResponse
 from google.genai import types
 
 from assignment.reports import export_leads, export_review
 from assignment.review import collect_review
+
+
+def record_search_grounding(callback_context: CallbackContext, llm_response: LlmResponse) -> None:
+    """Keep provider search evidence when AgentTool hides its nested agent events."""
+    if llm_response.grounding_metadata:
+        records = list(callback_context.state.get("lead_search_evidence", []))
+        records.append(
+            {
+                "agent": callback_context.agent_name,
+                "grounding": llm_response.grounding_metadata.model_dump(
+                    mode="json", exclude_none=True
+                ),
+            }
+        )
+        callback_context.state["lead_search_evidence"] = records
 
 
 class ReviewEvidenceAgent(BaseAgent):

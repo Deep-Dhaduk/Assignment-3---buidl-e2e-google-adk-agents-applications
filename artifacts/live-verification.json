@@ -1,24 +1,46 @@
 {
-  "verified_at_utc": "2026-10-31T17:01:03.489198+00:00",
-  "all_five_live_workflows_complete": false,
-  "successful_applications": 4,
+  "verified_at_utc": "2026-11-01T13:31:39.653547+00:00",
+  "all_five_live_workflows_complete": true,
+  "successful_applications": 5,
   "lead_generation": {
-    "status": "partial",
+    "status": "passed_with_manual_citation_review",
+    "verified_at_utc": "2026-11-01T13:31:39.653547+00:00",
+    "model": "gemini-2.5-flash",
     "profile_confirmation": "passed",
-    "research_and_export": "blocked",
-    "models_attempted": [
-      "gemini-2.5-flash",
-      "gemini-3.5-flash-lite"
+    "research_and_export": "passed",
+    "profile_trace": "artifacts/local/live-validation/lead_generation-39d08573918c4bb1a48dcb0045578420.json",
+    "research_trace": "artifacts/local/live-validation/lead_generation-3d5bc431d0bd42e49c0fcbbf7dc342d4.json",
+    "live_report_exported": true,
+    "citations_inspected": true,
+    "lead_count": 1,
+    "fit_score": 70,
+    "unknowns": [
+      "Current Exact Headcount",
+      "QA buying intent not verified"
     ],
-    "reason": "Gemini 2.5 Flash returned 503 then a daily free-tier limit of 20 requests. Gemini 3.5 Flash-Lite returned 429 on the search workflow; its documented free tier excludes Google Search grounding.",
-    "profile_trace": "artifacts/local/live-validation/lead_generation-2d021ac6bab348d4a0b95a62127937ff.json",
-    "errors": [
-      "artifacts/local/live-validation/lead_research.json",
-      "artifacts/local/live-validation/lead_research_retry.json",
-      "artifacts/local/live-validation/lead_research_lite.json"
-    ],
-    "citations_inspected": false,
-    "live_report_exported": false
+    "report_json": "artifacts/lead-report.json",
+    "report_csv": "artifacts/lead-report.csv",
+    "search_evidence": "artifacts/lead-search-evidence.json",
+    "citation_review": "artifacts/lead-citation-review.json",
+    "acceptance_scope": "Accepted as a tentative research lead with explicit uncertainties, not as a verified sales opportunity.",
+    "previous_blocker": {
+      "status": "partial",
+      "profile_confirmation": "passed",
+      "research_and_export": "blocked",
+      "models_attempted": [
+        "gemini-2.5-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "reason": "Gemini 2.5 Flash returned 503 then a daily free-tier limit of 20 requests. Gemini 3.5 Flash-Lite returned 429 on the search workflow; its documented free tier excludes Google Search grounding.",
+      "profile_trace": "artifacts/local/live-validation/lead_generation-2d021ac6bab348d4a0b95a62127937ff.json",
+      "errors": [
+        "artifacts/local/live-validation/lead_research.json",
+        "artifacts/local/live-validation/lead_research_retry.json",
+        "artifacts/local/live-validation/lead_research_lite.json"
+      ],
+      "citations_inspected": false,
+      "live_report_exported": false
+    }
   },
   "gemini_cli_agent": {
     "status": "passed",
@@ -87,15 +109,16 @@
   "local_checks": {
     "lint": "passed",
     "pytest_passed": 22,
-    "pytest_warnings": 13
+    "pytest_warnings": 13,
+    "verified_at_utc": "2026-11-01T13:31:39.653547+00:00"
   },
   "limitations": [
     "Model output requires review. CLI suggested accepting zero quantity, while the fixed sample explicitly rejects zero quantity; do not adopt that suggestion without deciding the intended requirement.",
     "The order was persisted before a model-availability error interrupted its approval response. A later order_status tool call verified the order, without creating a duplicate.",
     "Gemini 2.5 Flash-Lite returned 404 for this new account; the API recommended Gemini 3.5 Flash-Lite.",
     "No billing settings or .env values were changed; model overrides applied only to verification processes.",
-    "Lead research, citation inspection and live lead export remain incomplete.",
-    "Cloud deployment and video recording remain incomplete."
+    "Cloud deployment and video recording remain incomplete.",
+    "Lead research required prompt corrections and a guided rerun after manual citation review; current headcount and QA buying intent remain unknown. Review outputs before treating candidates as qualified leads."
   ],
   "references": [
     "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite",

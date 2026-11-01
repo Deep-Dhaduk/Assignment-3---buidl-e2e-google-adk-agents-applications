@@ -20,8 +20,8 @@ YouTube URL: **pending recording and upload**.
 
 - [x] Configure Gemini locally
 - [x] Complete live bug-assistant, Gemini CLI, code-review and e-commerce runs
-- [ ] Complete lead research/export after model quota and Search access permit it (profile confirmation passed)
-- [ ] Inspect research citations and resulting reports
+- [x] Complete live lead research and JSON/CSV export (November 1; guided rerun with explicit uncertainties)
+- [x] Inspect all final lead-report citations and verify JSON/CSV agreement
 - [ ] Capture readable screenshots/recordings of actual agent tool calls
 - [ ] Record code explanations and live execution in a YouTube video
 - [ ] Insert the real video link and chapter timestamps into README

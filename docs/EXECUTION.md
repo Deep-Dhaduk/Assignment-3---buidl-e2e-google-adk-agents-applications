@@ -19,7 +19,7 @@ Edit `.env` locally with your Gemini key. A free-tier key may have low quotas or
 
 ## Live validation status
 
-Four applications passed live checks; lead research/export is still blocked. See [live validation results](LIVE_VALIDATION.md) for tested models, quota limitations, and the next run.
+All five applications completed live checks. Lead research/export completed after a guided rerun and manual citation review on November 1. See [live validation results](LIVE_VALIDATION.md) for tested models, evidence, and known output limitations.
 
 ## Local verification
 

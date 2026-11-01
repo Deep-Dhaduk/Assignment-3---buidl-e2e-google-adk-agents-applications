@@ -1,0 +1,25 @@
+{
+  "target_profile": "B2B SaaS, United States, 10-50 employees, Develops web applications",
+  "methodology": "Score fit 0-100 using three distinct components: industry match up to 40, geography up to 30, and evidenced buying signals up to 30. Show the three component scores and their sum in each rationale. NEVER substitute product focus, a web app, company size, or generic SaaS fit for buying signals. If explicit relevant buying-signal evidence is absent, buying signals MUST score 0 and total fit_score MUST be at most 70; include 'QA buying intent not verified' in unknowns. Missing evidence earns no points. Keep only the exact 2-4 relevant URLs from verification, including a primary company source where available. Report dated third-party headcounts as estimates, not verified current headcount, and include that uncertainty in unknowns. Do not claim full verification if any criterion is uncertain. The limitations must explicitly identify uncertain criteria; never say all criteria were met when headcount is unknown. Never invent URLs or pad the list. An empty leads array is valid when evidence is insufficient.",
+  "leads": [
+    {
+      "company": "Baremetrics",
+      "website": "https://baremetrics.com/",
+      "fit_score": 70,
+      "rationale": "Industry match: 40, Geography match: 30, Buying signals: 0. Total: 70.",
+      "sources": [
+        "https://baremetrics.com/",
+        "https://baremetrics.com/about",
+        "https://growjo.com/company/Baremetrics"
+      ],
+      "unknowns": [
+        "Current Exact Headcount",
+        "QA buying intent not verified"
+      ]
+    }
+  ],
+  "limitations": [
+    "Current exact headcount is unknown due to conflicting and potentially dated estimates from public sources.",
+    "QA buying intent is not verified as no explicit evidence was found."
+  ]
+}

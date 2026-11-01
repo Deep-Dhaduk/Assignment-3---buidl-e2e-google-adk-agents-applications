@@ -2,7 +2,7 @@
 
 Five runnable Python applications with real ADK orchestration, a Gemini CLI subprocess, MCP services, code-review evidence, and transactional demo orders.
 
-**Submission status:** implementation and local verification are included. Live Gemini runs passed for the bug assistant, Gemini CLI, code review, and e-commerce. Lead-profile confirmation passed, but live research/export remains blocked by model quota and Search availability. See [live validation results](docs/LIVE_VALIDATION.md). A YouTube recording has **not** been created or uploaded. Google Cloud/AlloyDB deployment has **not** been executed. See [the submission checklist](docs/SUBMISSION.md) before submitting.
+**Submission status:** implementation and local verification are included. All five applications have now completed live Gemini workflows. Lead generation completed on November 1 after scoring corrections and manual citation review; its one exported lead retains explicit headcount and buying-intent uncertainties. See [live validation results](docs/LIVE_VALIDATION.md). A YouTube recording has **not** been created or uploaded. Google Cloud/AlloyDB deployment has **not** been executed. See [the submission checklist](docs/SUBMISSION.md) before submitting.
 
 | Requirement | Application | Implementation |
 |---|---|---|
@@ -103,8 +103,10 @@ Open `http://127.0.0.1:8000` and select an assignment folder (`assignment_a_lead
 - [References and adaptations](docs/REFERENCES.md)
 - [Submission checklist](docs/SUBMISSION.md)
 - [Recorded local verification](artifacts/verification.json)
-- [Live validation results and remaining blocker](docs/LIVE_VALIDATION.md)
+- [Live validation results and limitations](docs/LIVE_VALIDATION.md)
 - [Sanitized live verification evidence](artifacts/live-verification.json)
+- [Live lead report (JSON)](artifacts/lead-report.json) and [CSV](artifacts/lead-report.csv)
+- [Lead citation review](artifacts/lead-citation-review.json) and [search evidence](artifacts/lead-search-evidence.json)
 
 Agent traces and generated reports go to `artifacts/local/`; databases and sessions go to `data/`. Both are ignored by Git. Only sanitized, intentional evidence belongs in the submission.
 

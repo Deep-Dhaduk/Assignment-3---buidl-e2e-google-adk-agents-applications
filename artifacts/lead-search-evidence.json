@@ -1,0 +1,75 @@
+{
+  "recorded_at_utc": "2026-11-01T13:31:39.653547+00:00",
+  "model": "gemini-2.5-flash",
+  "trace": "artifacts/local/live-validation/lead_generation-3d5bc431d0bd42e49c0fcbbf7dc342d4.json",
+  "note": "Provider-returned grounding metadata captured from the final targeted research and verification run. Queries and indexed source titles are execution evidence, not a guarantee that every result supports the lead.",
+  "stages": [
+    {
+      "agent": "company_researcher",
+      "queries": [
+        "Baremetrics industry",
+        "Baremetrics team size",
+        "Baremetrics employee count",
+        "Baremetrics product focus",
+        "Baremetrics web application",
+        "Baremetrics United States location",
+        "Baremetrics QA testing needs",
+        "Baremetrics hiring QA"
+      ],
+      "sources": [
+        {
+          "title": "baremetrics.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqmtqlA9hBqAPBDGEll_HmPZkyzrlKOGkHpGlJuHF7RwP8WiGVJhaT93iNKJSw5qcnvYre58CuenDMTkcaI_LtminVgK8yk4YFGYo5hejUkHJXl0spxixQf-laXzFEQBoYQQ=="
+        },
+        {
+          "title": "baremetrics.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiEUA6-J8Qig4GYttsbUcTfFURje4nwcUh-bWkiBa-yuqYm8plbzaNzVM3sG1Z8jmMcW8O_Aq6_DSGjPQCLe0sP2-BjhA_if6Lw--MV3swrJcXJsKGPcN-efUTZ1KpWl5Pf_GSCw=="
+        },
+        {
+          "title": "baremetrics.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGArMk2A7_ssUZebJf-MR5saHg7--Yj9brhmZWaWSgdXKbRTnhWQ8xddRV_XUk-krVgc6OsLEr7Bjl3Hv3R_UoP46non_uBa7UDeLat5fAni3y8PJh0zMxM5pRHWXvjmXleUA5nN54mztyXLHcyMGdOp50L-yYEUl0-zU="
+        },
+        {
+          "title": "growjo.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYm1Nd6buEn6OYKZYuqSBOcHapPCNhtzA_LesmXJ6_1N8g7fr9FzVoC8yW79wRKLSBdT7waqr-9WdH1ou8uEDLf7VfAjfy5d2DpUb5DBnbKnqRXh4RV2m2x9R4yCvxt3Y="
+        },
+        {
+          "title": "stripe.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEt9ImhYH2iqw-7naBaOMyRqNWogSnN3IgreodgLI6FPxDx_8OX94Gxn7N9-DDEt9emyGNtQXXgMTmoNvy9wMUBRnP8Wl4Lc71tuo9UJjeNM9qGEMMtJtxpUH-bP2hvcz0mQPz7WgvGk7w="
+        },
+        {
+          "title": "baremetrics.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFWf-RNw3CsYmUNv8OQshwLUxkRzHljRMroOlQrEFUp2dZKlR_yqlYDTebjsDZ7_Mv6GI8A2JjK-b63dAszQgqkW4vh4Tp_OA7oRCqVTiB2xNgdVG9PmA="
+        },
+        {
+          "title": "pageflows.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHq-flKamAR1KoWBIzhLDDyYUviCkMqylBvCSEVS2W_mNS6oWvWo-n1aK3PkMOHkYTrdWnZDgNgweW-e6GpArHl9yT0PItFdqu3iOvrIzhJfRmL-ZaZSzgN0t8Tu9X5chi3eODpxzNnm0FsM7T1Z9-pXBayrq_GLg=="
+        },
+        {
+          "title": "informer.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHcqQEUzsIBv8DNeMdz9msRc_EEYaeGXU5XJAWk955QZqG4TCd38SxXDXcWkovBxb4P1C4SU-e_XjTFC3ls6Lm7Wyofxz8a9_n-kCN-Zys5KRYvI2ga6B8WuUCv-LOrTGUis5r-"
+        },
+        {
+          "title": "toolvoro.ai",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3QPJgt3vbZkw29Zc0PZKQOEeiNK8ci9R0p6-XdjJNXSAVhcy6WP1ou0PggsFgm9zdIaYVcOpBFPNCV0-jDfJZsZ7wL9tN2mohMn58cWvKMC93zxQHnY2PHoLyp4dtB4WwOMOxvGa2UTub6Zu5KQ=="
+        }
+      ]
+    },
+    {
+      "agent": "evidence_verifier",
+      "queries": [
+        "\"saas metrics\" \"subscription analytics\"",
+        "team size",
+        "employees location",
+        "\"web app\" \"desktop app\"",
+        "\"QA\" \"quality assurance\" hiring"
+      ],
+      "sources": [
+        {
+          "title": "chartsy.app",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-ZA8AfqooH7CnSqJL3BS8-UHP12BWenxuPQAi0YOYNQgYUoycCQHK94SKVv6DQYVcooVW_HCGt7sYLtkQOoDY-9p04YVqvG3xgglqlbfTVEnn16Juod0loQK6Kbpu0rREpLdrrsSL3m1gMb2qB7A__THcWtgv4iM="
+        }
+      ]
+    }
+  ]
+}
