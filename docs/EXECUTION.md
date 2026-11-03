@@ -120,6 +120,28 @@ The pinned ADK UI starts successfully and discovers all five applications. It ha
 
 ## Troubleshooting
 
+### Temporary model failure while recording
+
+Lead generation retries each model request up to four total attempts for HTTP
+500/502/503/504, with exponential backoff starting at two seconds. It does not
+automatically restart the entire workflow or retry a daily quota error. The
+existing overall agent-turn time limit still applies. Retries cannot guarantee
+that an overloaded provider recovers.
+
+If a model error persists, the CLI prints a concise error and exits with status 1.
+When a session ID is known, it prints a resume command. Interactive `--session`
+restores the previous conversation and any pending confirmations:
+
+```powershell
+.\.venv\Scripts\python.exe -m assignment run lead_generation --session YOUR_SESSION_ID
+```
+
+Wait for the `You>` prompt before entering your research request. Video-script
+instructions such as "While it processes, say" are spoken narration, not terminal
+commands. Check whether earlier tool actions or exports completed before repeating
+an action after a failed response. A previous successful recording or saved report
+must be labeled as such if the new live run fails.
+
 | Symptom | Action |
 |---|---|
 | Missing Gemini key | Edit `.env`, restart the process, run `doctor`; never print the key |

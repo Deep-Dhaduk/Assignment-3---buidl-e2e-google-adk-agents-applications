@@ -13,6 +13,23 @@ def model_name() -> str:
     return os.getenv("ADK_MODEL", "gemini-2.5-flash")
 
 
+def model_with_retries():
+    """Retry transient model HTTP failures, without replaying an agent workflow."""
+    from google.adk.models.google_llm import Gemini
+    from google.genai import types
+
+    return Gemini(
+        model=model_name(),
+        retry_options=types.HttpRetryOptions(
+            attempts=4,
+            initial_delay=2,
+            max_delay=10,
+            exp_base=2,
+            http_status_codes=[500, 502, 503, 504],
+        ),
+    )
+
+
 def data_dir() -> Path:
     path = Path(os.getenv("ADK_DATA_DIR", str(ROOT / "data"))).resolve()
     path.mkdir(parents=True, exist_ok=True)

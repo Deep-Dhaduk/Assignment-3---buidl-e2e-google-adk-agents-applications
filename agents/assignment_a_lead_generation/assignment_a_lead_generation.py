@@ -4,11 +4,11 @@ from google.adk.agents import LlmAgent, SequentialAgent
 from google.adk.tools import google_search
 from google.adk.tools.agent_tool import AgentTool
 
-from assignment.config import model_name
+from assignment.config import model_with_retries
 from assignment.reports import LeadReport
 from assignment.workflows import ExportAgent, record_search_grounding
 
-MODEL = model_name()
+MODEL = model_with_retries()
 pattern_discovery = LlmAgent(
     name="pattern_discovery",
     model=MODEL,

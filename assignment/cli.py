@@ -6,15 +6,17 @@ import os
 import shutil
 import sys
 
+from google.genai.errors import APIError
 from mcp import ClientSession
 from mcp.client.stdio import stdio_client
 
 from assignment import commerce
-from assignment.config import ROOT, artifact_dir
+from assignment.config import ROOT, artifact_dir, data_dir
 from assignment.db import initialize
 from assignment.mcp_client import server_parameters
 from assignment.review import collect_review
-from assignment.runtime import AGENTS, run_turn
+from assignment.runtime import AGENTS, pending_confirmations, run_turn
+from assignment.sessions import SQLiteSessionService
 
 
 def doctor() -> dict:
@@ -69,10 +71,51 @@ async def offline_demo() -> dict:
     }
 
 
-async def chat(name: str, project: str):
-    session_id = None
+async def run_turn_cli(name: str, user_id: str, **kwargs):
+    try:
+        return await run_turn(name, user_id, **kwargs)
+    except (APIError, TimeoutError) as exc:
+        if isinstance(exc, TimeoutError):
+            message = "The agent exceeded its time limit."
+        elif exc.code in {500, 502, 503, 504}:
+            message = f"Gemini is temporarily unavailable (HTTP {exc.code}). Try again later."
+        elif exc.code == 429:
+            message = "Gemini quota or rate limit reached (HTTP 429). Check AI Studio usage."
+        else:
+            message = f"Gemini rejected the request (HTTP {exc.code}). Check model/key access."
+        print(message, file=sys.stderr)
+        print(
+            "This turn did not finish. Earlier tool actions or exports may have completed; "
+            "check them before repeating an action.",
+            file=sys.stderr,
+        )
+        if session_id := kwargs.get("session_id"):
+            project = kwargs.get("project", "buggy")
+            print(
+                f"Resume: python -m assignment run {name} --session {session_id} "
+                f"--project {project}",
+                file=sys.stderr,
+            )
+        raise SystemExit(1) from None
+
+
+async def chat(name: str, project: str, session_id: str | None = None):
     pending = {}
+    if session_id:
+        sessions = SQLiteSessionService(data_dir() / "sessions.db")
+        try:
+            session = await sessions.get_session(
+                app_name=name, user_id="local-user", session_id=session_id
+            )
+            if not session:
+                print("Session not found for this agent and user.", file=sys.stderr)
+                raise SystemExit(1)
+            pending = pending_confirmations(session.events)
+        finally:
+            await sessions.close()
     print("Enter a message; /quit exits. Pending actions require /approve or /reject.")
+    if pending:
+        print("Action awaiting your approval:", json.dumps(pending, indent=2))
     while True:
         prompt = input("You> ").strip()
         if prompt == "/quit":
@@ -83,15 +126,16 @@ async def chat(name: str, project: str):
             if prompt not in {"/approve", "/reject"}:
                 print("Use /approve or /reject for the displayed action.")
                 continue
-            result = await run_turn(
+            result = await run_turn_cli(
                 name,
                 "local-user",
                 session_id=session_id,
                 confirmation_id=next(iter(pending)),
                 confirmed=prompt == "/approve",
+                project=project,
             )
         else:
-            result = await run_turn(
+            result = await run_turn_cli(
                 name, "local-user", prompt=prompt, session_id=session_id, project=project
             )
         session_id = result["session_id"]
@@ -101,6 +145,7 @@ async def chat(name: str, project: str):
         if pending:
             print("Action awaiting your approval:", json.dumps(pending, indent=2))
         print("Saved trace:", result["trace"])
+        print("Session:", session_id)
 
 
 def main():
@@ -131,7 +176,7 @@ def main():
         result = collect_review(args.project)
     elif args.prompt:
         result = asyncio.run(
-            run_turn(
+            run_turn_cli(
                 args.agent,
                 "local-user",
                 prompt=args.prompt,
@@ -140,7 +185,7 @@ def main():
             )
         )
     else:
-        asyncio.run(chat(args.agent, args.project))
+        asyncio.run(chat(args.agent, args.project, args.session))
         return
     print(json.dumps(result, indent=2, ensure_ascii=True))
 

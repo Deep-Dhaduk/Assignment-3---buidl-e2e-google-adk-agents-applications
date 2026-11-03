@@ -2,7 +2,7 @@
 
 Five runnable Python applications with real ADK orchestration, a Gemini CLI subprocess, MCP services, code-review evidence, and transactional demo orders.
 
-**Submission status:** implementation and local verification are included. All five applications have now completed live Gemini workflows. Lead generation completed on November 1 after scoring corrections and manual citation review; its one exported lead retains explicit headcount and buying-intent uncertainties. See [live validation results](docs/LIVE_VALIDATION.md). A YouTube recording has **not** been created or uploaded. Google Cloud/AlloyDB deployment has **not** been executed. See [the submission checklist](docs/SUBMISSION.md) before submitting.
+**Submission status:** implementation and local verification are included. All five applications have now completed live Gemini workflows. Lead generation completed on November 1 after scoring corrections and manual citation review; its one exported lead retains explicit headcount and buying-intent uncertainties. See [live validation results](docs/LIVE_VALIDATION.md). The five walkthrough videos are available in [Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing). Google Cloud/AlloyDB deployment has **not** been executed. See [the submission checklist](docs/SUBMISSION.md) before submitting.
 
 | Requirement | Application | Implementation |
 |---|---|---|
@@ -97,6 +97,7 @@ Open `http://127.0.0.1:8000` and select an assignment folder (`assignment_a_lead
 ## Artifacts and walkthrough
 
 - [Architecture and code walkthrough](docs/ARCHITECTURE.md)
+- [Five walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing)
 - [Execution guide and demo prompts](docs/EXECUTION.md)
 - [YouTube recording script](docs/VIDEO_SCRIPT.md)
 - [Deployment and operational boundaries](docs/DEPLOYMENT.md)
