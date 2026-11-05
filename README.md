@@ -99,7 +99,6 @@ Open `http://127.0.0.1:8000` and select an assignment folder (`assignment_a_lead
 - [Architecture and code walkthrough](docs/ARCHITECTURE.md)
 - [Five walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing)
 - [Execution guide and demo prompts](docs/EXECUTION.md)
-- [YouTube recording script](docs/VIDEO_SCRIPT.md)
 - [Deployment and operational boundaries](docs/DEPLOYMENT.md)
 - [References and adaptations](docs/REFERENCES.md)
 - [Submission checklist](docs/SUBMISSION.md)

@@ -22,4 +22,4 @@ Review the displayed quote, then use `/approve` or `/reject` for a pending actio
 
 Demo orders only, no payments. SQLite is the tested backend; PostgreSQL/AlloyDB support is configurable but unverified here. Runtime approval is required for orders and delivery changes.
 
-Generated traces/reports are in `artifacts/local/`. Watch the [assignment walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing). Follow [the execution guide](../../docs/EXECUTION.md) and [recording script](../../docs/VIDEO_SCRIPT.md). Reference projects and explicit adaptations are listed in [REFERENCES.md](../../docs/REFERENCES.md).
+Generated traces/reports are in `artifacts/local/`. Watch the [assignment walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing). Follow [the execution guide](../../docs/EXECUTION.md). Reference projects and explicit adaptations are listed in [REFERENCES.md](../../docs/REFERENCES.md).

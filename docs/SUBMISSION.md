@@ -13,7 +13,7 @@ YouTube URL: **pending recording and upload**.
 - [x] Code-review evidence collection and sample before/after projects
 - [x] Runtime-confirmed orders, ownership checks and idempotent checkout
 - [x] Local tests, CI configuration and dependency snapshot
-- [x] Architecture, execution instructions and recording script
+- [x] Architecture and execution instructions
 - [x] Container and optional deployment instructions
 
 ## Before handing in

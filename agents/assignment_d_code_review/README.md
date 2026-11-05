@@ -22,4 +22,4 @@ For real fixture execution set `$env:REVIEW_EXECUTION = "trusted"`. Run again wi
 
 Select the project with --project buggy or --project fixed. Execution defaults to disabled; trusted mode is only for repository fixtures. Docker mode requires a separately built runner image.
 
-Generated traces/reports are in `artifacts/local/`. Watch the [assignment walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing). Follow [the execution guide](../../docs/EXECUTION.md) and [recording script](../../docs/VIDEO_SCRIPT.md). Reference projects and explicit adaptations are listed in [REFERENCES.md](../../docs/REFERENCES.md).
+Generated traces/reports are in `artifacts/local/`. Watch the [assignment walkthrough videos on Google Drive](https://drive.google.com/drive/folders/1PsvdSfge91KUjwOJbUK7G3BqPK1wT3FH?usp=sharing). Follow [the execution guide](../../docs/EXECUTION.md). Reference projects and explicit adaptations are listed in [REFERENCES.md](../../docs/REFERENCES.md).
